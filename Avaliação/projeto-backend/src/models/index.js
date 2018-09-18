@@ -9,29 +9,33 @@ const sequelize = new Sequelize(null, null, null, {
     }
 });
 
-/*******
- * TODO: Definição dos modelos.
- * Defina aqui os modelos a serem mapeados para entidades do banco de dados.
- *******/
 const Usuario = sequelize.define('usuario', {
-   // ...
+    nome: Sequelize.STRING,
+    email: {
+        type: Sequelize.STRING,
+        unique: true
+    },
+    senha: Sequelize.STRING,
+    cpf: Sequelize.BIGINT,
+    nascimento: Sequelize.DATE
 });
 
 const Tarefa = sequelize.define('tarefa', {
-    // ...
-})
-
-/*******
- * TODO: Definição das relações.
- * Defina aqui os relacionamentos entre os modelos.
- *******/
+    titulo: Sequelize.STRING,
+    descricao: Sequelize.TEXT,
+    concluida: {
+        type: Sequelize.INTEGER,
+        isNullable: true
+    }
+});
 
 Usuario.hasMany(Tarefa, {
-    // ...
-})
+    foreignKey: 'usuarioId',
+    isNullable: true
+});
 
 module.exports = {
     sequelize,
     Usuario,
-    Tarefa,
+    Tarefa
 };
