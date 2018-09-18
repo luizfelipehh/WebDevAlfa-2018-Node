@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-/**
- * Definição dos arquivos de rotas.
- */
-
 const usuarios = require('./usuarios');
 const tarefas = require('./tarefas');
 

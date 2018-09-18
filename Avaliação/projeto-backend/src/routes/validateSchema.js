@@ -1,7 +1,3 @@
-/**
- * Função auxiliar que cria um middleware de validção baseado no schema informado.
- * @param {Object} schema 
- */
 module.exports = function validateSchema(schema) {
     return function middleware(request, response, next) {
         request.check(schema);
